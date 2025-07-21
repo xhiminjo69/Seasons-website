@@ -2,8 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '/Seasons-',
-  assetPrefix: '/Seasons-/',
+  basePath: '/Seasons-website',
+  assetPrefix: '/Seasons-website/',
   eslint: {
     ignoreDuringBuilds: true,
   },
