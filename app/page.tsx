@@ -40,22 +40,22 @@ export default function SeasonsWebsite() {
     {
       name: "Amalfi.",
       description: "Limoncello, gin, fresh lemon, basil",
-      image: "/images/amalfi-cocktail.jpg",
+      image: "./images/amalfi-cocktail.jpg",
     },
     {
       name: "Spring Awakening.",
       description: "Gin, elderflower, cucumber, mint",
-      image: "/images/cocktail-hero.jpg",
+      image: "./images/cocktail-hero.jpg",
     },
     {
       name: "Summer Solstice.",
       description: "Rum, passion fruit, mango, coconut",
-      image: "/images/cocktail-spray.jpg",
+      image: "./images/cocktail-spray.jpg",
     },
     {
       name: "Autumn Harvest.",
       description: "Bourbon, apple, cinnamon, maple",
-      image: "/images/craft-cocktails.jpg",
+      image: "./images/craft-cocktails.jpg",
     },
   ]
 
@@ -94,7 +94,7 @@ export default function SeasonsWebsite() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <motion.img 
-                src="/images/seasons-logo.jpg" 
+                src="./images/seasons-logo.jpg" 
                 alt="Seasons" 
                 className="h-7 w-7 sm:h-8 sm:w-8 rounded-full object-cover" 
                 whileHover={{ rotate: 360 }}
@@ -199,7 +199,7 @@ export default function SeasonsWebsite() {
           <motion.div
             className="w-full h-full bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/Screenshot 2025-07-17 200513.jpg')`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./Screenshot 2025-07-17 200513.jpg')`,
             }}
             initial={{ scale: 1.02 }}
             animate={{ scale: 1 }}
@@ -323,7 +323,7 @@ export default function SeasonsWebsite() {
             >
               <div className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-amber-400/20 to-transparent">
                 <img 
-                  src="/Screenshot 2025-07-21 181917.jpg" 
+                  src="./Screenshot 2025-07-21 181917.jpg" 
                   alt="Seasons Bar Screenshot" 
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -817,7 +817,7 @@ export default function SeasonsWebsite() {
       <footer className="bg-black py-8 sm:py-12 px-4 sm:px-6 border-t border-zinc-800">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
-            <img src="/images/seasons-logo.jpg" alt="Seasons" className="h-7 w-7 sm:h-8 sm:w-8 rounded-full object-cover" />
+            <img src="./images/seasons-logo.jpg" alt="Seasons" className="h-7 w-7 sm:h-8 sm:w-8 rounded-full object-cover" />
             <span className="text-lg sm:text-xl font-light tracking-wider">SEASONS</span>
           </div>
           <p className="text-sm sm:text-base font-light opacity-70 mb-3 sm:mb-4">Where Every Sip Tells a Story</p>
