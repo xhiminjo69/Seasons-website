@@ -385,306 +385,124 @@ export default function SeasonsWebsite() {
         </div>
       </section>
 
-      {/* Signature Drinks Section - Enhanced with Individual Panels */}
-      <section id="signature-drinks" className="py-16 sm:py-20">
+      {/* Signature Drinks Section - Mobile Optimized */}
+      <section id="signature-drinks" className="py-16 sm:py-20 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16 sm:mb-24"
-            initial={{ y: 80, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            <motion.h2 
-              className="text-4xl sm:text-5xl md:text-6xl font-light tracking-wider mb-6 sm:mb-8"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-              viewport={{ once: true }}
-            >
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wider mb-6 sm:mb-8">
               SIGNATURE COCKTAILS
-            </motion.h2>
-            <motion.p 
-              className="text-lg sm:text-xl font-light opacity-90 max-w-3xl mx-auto"
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 0.9 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl font-light opacity-90 max-w-3xl mx-auto">
               Each cocktail tells a unique story through carefully selected ingredients and masterful craftsmanship.
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </div>
 
-        {/* Individual Cocktail Panels */}
-        <div className="space-y-16 sm:space-y-32 md:space-y-40">
-          {signatureDrinks.map((drink, index) => {
-            const isEven = index % 2 === 0;
-            const ingredients = drink.description.split(', ');
-            
-            return (
-              <motion.div
-                key={drink.name}
-                className="relative"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-200px" }}
-              >
-                {/* Background Gradient for Each Panel */}
-                <motion.div
-                  className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-amber-400/5 via-transparent to-transparent`}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 2, delay: 0.3 }}
-                  viewport={{ once: true }}
-                />
-                
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                  <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center ${
-                    isEven ? '' : 'lg:flex-row-reverse'
+        {/* Cocktail Grid - Mobile First Approach */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-24">
+            {signatureDrinks.map((drink, index) => {
+              const isEven = index % 2 === 0;
+              const ingredients = drink.description.split(', ');
+              
+              return (
+                <div
+                  key={drink.name}
+                  className="relative bg-gradient-to-br from-zinc-900/50 to-black/50 rounded-2xl p-4 sm:p-6 lg:p-8 border border-zinc-800/50"
+                >
+                  {/* Mobile-First Layout */}
+                  <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center ${
+                    !isEven ? 'lg:grid-flow-col-dense' : ''
                   }`}>
                     
                     {/* Image Section */}
-                    <motion.div
-                      className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
-                      initial={{ 
-                        x: isEven ? -100 : 100, 
-                        opacity: 0, 
-                        scale: 0.8,
-                        rotateY: isEven ? -15 : 15
-                      }}
-                      whileInView={{ 
-                        x: 0, 
-                        opacity: 1, 
-                        scale: 1,
-                        rotateY: 0
-                      }}
-                      transition={{ 
-                        duration: 1.2, 
-                        delay: 0.2,
-                        ease: [0.25, 0.46, 0.45, 0.94]
-                      }}
-                      viewport={{ once: true, margin: "-150px" }}
-                      whileHover={{ 
-                        scale: 1.05, 
-                        rotateY: isEven ? 5 : -5,
-                        transition: { duration: 0.6, ease: "easeOut" }
-                      }}
-                    >
+                    <div className={`relative ${!isEven ? 'lg:col-start-2' : ''}`}>
                       <div className="relative group">
-                        {/* Floating Elements */}
-                        <motion.div
-                          className="absolute -top-4 -right-4 w-20 h-20 bg-amber-400/10 rounded-full blur-xl"
-                          animate={{ 
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.6, 0.3]
-                          }}
-                          transition={{ 
-                            duration: 4, 
-                            repeat: Infinity,
-                            delay: index * 0.5
-                          }}
-                        />
+                        {/* Simplified floating element */}
+                        <div className="absolute -top-2 -right-2 w-16 h-16 bg-amber-400/10 rounded-full blur-lg opacity-60"></div>
                         
-                        <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-amber-400/20 to-transparent p-1">
-                          <div className="w-full h-full rounded-xl overflow-hidden bg-zinc-900">
-                            <motion.img 
+                        <div className="aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-br from-amber-400/20 to-transparent p-1">
+                          <div className="w-full h-full rounded-lg overflow-hidden bg-zinc-900">
+                            <img 
                               src={drink.image} 
                               alt={drink.name}
-                              className="w-full h-full object-cover"
-                              initial={{ scale: 1.2 }}
-                              whileInView={{ scale: 1 }}
-                              transition={{ duration: 1.5, ease: "easeOut" }}
-                              viewport={{ once: true }}
-                              whileHover={{ scale: 1.1 }}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                               loading="lazy"
                               onError={(e) => {
                                 const target = e.target as HTMLImageElement;
                                 target.style.display = 'none';
                                 const parent = target.parentElement;
                                 if (parent) {
-                                  parent.innerHTML = '<div class="w-full h-full flex items-center justify-center text-amber-400 text-2xl font-light">🍸</div>';
+                                  parent.innerHTML = '<div class="w-full h-full flex items-center justify-center text-amber-400 text-3xl font-light bg-zinc-800 rounded-lg">🍸</div>';
                                 }
                               }}
                             />
                           </div>
                         </div>
                         
-                        {/* Overlay Effects */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-2xl opacity-0 group-hover:opacity-100"
-                          transition={{ duration: 0.5 }}
-                        />
+                        {/* Simplified overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                    </motion.div>
+                    </div>
                     
                     {/* Content Section */}
-                    <motion.div
-                      className={`space-y-6 sm:space-y-8 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
-                      initial={{ 
-                        x: isEven ? 100 : -100, 
-                        opacity: 0 
-                      }}
-                      whileInView={{ 
-                        x: 0, 
-                        opacity: 1 
-                      }}
-                      transition={{ 
-                        duration: 1, 
-                        delay: 0.4,
-                        ease: [0.25, 0.46, 0.45, 0.94]
-                      }}
-                      viewport={{ once: true, margin: "-100px" }}
-                    >
+                    <div className={`space-y-4 sm:space-y-6 ${!isEven ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
                       {/* Cocktail Name */}
-                      <motion.div
-                        initial={{ y: 50, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        viewport={{ once: true }}
-                      >
-                        <motion.h3 
-                          className="text-4xl sm:text-5xl md:text-6xl font-light tracking-wider text-amber-400 mb-2"
-                          whileHover={{ 
-                            scale: 1.05,
-                            textShadow: "0 0 20px rgba(251, 191, 36, 0.5)"
-                          }}
-                          transition={{ duration: 0.3 }}
-                        >
+                      <div>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-wider text-amber-400 mb-2">
                           {drink.name}
-                        </motion.h3>
-                        <motion.div
-                          className="w-20 h-0.5 bg-gradient-to-r from-amber-400 to-transparent"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: 80 }}
-                          transition={{ duration: 1, delay: 0.8 }}
-                          viewport={{ once: true }}
-                        />
-                      </motion.div>
+                        </h3>
+                        <div className="w-16 h-0.5 bg-gradient-to-r from-amber-400 to-transparent"></div>
+                      </div>
                       
-                      {/* Ingredients with Staggered Animation */}
-                      <motion.div
-                        className="space-y-4"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.8 }}
-                        viewport={{ once: true }}
-                      >
-                        <motion.h4 
-                          className="text-lg sm:text-xl font-light tracking-wide opacity-70 uppercase"
-                          initial={{ x: -20, opacity: 0 }}
-                          whileInView={{ x: 0, opacity: 0.7 }}
-                          transition={{ duration: 0.6, delay: 1 }}
-                          viewport={{ once: true }}
-                        >
+                      {/* Ingredients */}
+                      <div className="space-y-3">
+                        <h4 className="text-sm sm:text-base font-light tracking-wide opacity-70 uppercase">
                           Ingredients
-                        </motion.h4>
-                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                        </h4>
+                        <div className="grid grid-cols-2 gap-2 sm:gap-3">
                           {ingredients.map((ingredient, ingredientIndex) => (
-                            <motion.div
+                            <div
                               key={ingredient}
-                              className="group cursor-pointer"
-                              initial={{ 
-                                scale: 0.8, 
-                                opacity: 0, 
-                                y: 20 
-                              }}
-                              whileInView={{ 
-                                scale: 1, 
-                                opacity: 1, 
-                                y: 0 
-                              }}
-                              transition={{ 
-                                duration: 0.5, 
-                                delay: 1.2 + (ingredientIndex * 0.1),
-                                ease: [0.25, 0.46, 0.45, 0.94]
-                              }}
-                              viewport={{ once: true }}
-                              whileHover={{ 
-                                scale: 1.05,
-                                y: -2
-                              }}
+                              className="bg-black/40 backdrop-blur-sm border border-amber-400/20 rounded-lg p-2 sm:p-3 hover:border-amber-400/40 hover:bg-amber-400/5 transition-all duration-300 cursor-pointer"
                             >
-                              <div className="bg-black/30 backdrop-blur-sm border border-amber-400/20 rounded-lg p-3 sm:p-4 group-hover:border-amber-400/40 group-hover:bg-amber-400/5 transition-all duration-300">
-                                <span className="text-sm sm:text-base font-light capitalize group-hover:text-amber-400 transition-colors">
-                                  {ingredient.trim()}
-                                </span>
-                              </div>
-                            </motion.div>
+                              <span className="text-xs sm:text-sm font-light capitalize hover:text-amber-400 transition-colors">
+                                {ingredient.trim()}
+                              </span>
+                            </div>
                           ))}
                         </div>
-                      </motion.div>
+                      </div>
                       
-                      {/* Experience Description */}
-                      <motion.div
-                        className="space-y-4"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 1.5 }}
-                        viewport={{ once: true }}
-                      >
-                        <p className="text-base sm:text-lg font-light leading-relaxed opacity-90">
+                      {/* Description */}
+                      <div className="space-y-3">
+                        <p className="text-sm sm:text-base font-light leading-relaxed opacity-90">
                           {index === 0 && "A Mediterranean escape in a glass. The bright citrus notes dance with aromatic herbs, creating a refreshing symphony that transports you to the sun-soaked Amalfi coast."}
                           {index === 1 && "Delicate and refreshing, this cocktail captures the essence of spring's first bloom. Floral notes intertwine with crisp botanicals for a truly awakening experience."}
                           {index === 2 && "Bold tropical flavors meet smooth rum in this celebration of summer's peak. Each sip delivers waves of exotic fruit balanced with creamy coconut undertones."}
                           {index === 3 && "Warm spices and rich bourbon create the perfect autumn companion. Apple and maple notes provide comfort while cinnamon adds the perfect seasonal warmth."}
                         </p>
                         
-                        <motion.div
-                          className="flex items-center space-x-4 pt-4"
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          transition={{ duration: 0.6, delay: 1.8 }}
-                          viewport={{ once: true }}
-                        >
-                          <motion.div
-                            className="flex items-center space-x-1"
-                            whileHover={{ scale: 1.1 }}
-                          >
+                        <div className="flex items-center space-x-3 pt-2">
+                          <div className="flex items-center space-x-1">
                             {[...Array(5)].map((_, i) => (
-                              <motion.div
-                                key={i}
-                                initial={{ scale: 0, rotate: -180 }}
-                                whileInView={{ scale: 1, rotate: 0 }}
-                                transition={{ 
-                                  duration: 0.5, 
-                                  delay: 2 + (i * 0.1),
-                                  type: "spring",
-                                  stiffness: 200
-                                }}
-                                viewport={{ once: true }}
-                              >
-                                <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                              </motion.div>
+                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
                             ))}
-                          </motion.div>
-                          <motion.span 
-                            className="text-sm font-light opacity-70"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 0.7 }}
-                            transition={{ duration: 0.5, delay: 2.5 }}
-                            viewport={{ once: true }}
-                          >
+                          </div>
+                          <span className="text-xs sm:text-sm font-light opacity-70">
                             Signature Creation
-                          </motion.span>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  
+                  {/* Decorative line */}
+                  <div className={`absolute top-1/2 ${isEven ? 'right-0' : 'left-0'} w-1 h-16 bg-gradient-to-b from-transparent via-amber-400/30 to-transparent hidden lg:block`}></div>
                 </div>
-                
-                {/* Decorative Elements */}
-                <motion.div
-                  className={`absolute top-1/2 ${isEven ? 'right-0' : 'left-0'} w-1 h-32 bg-gradient-to-b from-transparent via-amber-400/30 to-transparent`}
-                  initial={{ scaleY: 0 }}
-                  whileInView={{ scaleY: 1 }}
-                  transition={{ duration: 1, delay: 1 }}
-                  viewport={{ once: true }}
-                />
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
